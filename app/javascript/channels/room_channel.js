@@ -16,3 +16,17 @@ consumer.subscriptions.create("RoomChannel", {
     // Called when there's incoming data on the websocket for this channel
   },
 });
+
+var submitMessages = function () {
+  $("#message_content").on("keydown", function (event) {
+    if (event.keyCode === 13) {
+      $("input").click();
+      event.target.value = "";
+      event.preventDefault();
+    }
+  });
+};
+
+$(document).on("turbolinks:load", function () {
+  submitMessages();
+});
